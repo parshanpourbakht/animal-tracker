@@ -3,51 +3,79 @@
 Please enter below information related to the found pig
 </p>
 
+
+
+
+
+
 <div mat-dialog-content>
-    <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Name">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter the name of the found Pig</mat-hint>
-    </mat-form-field>
+   <form [formGroup]="report_data">
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput placeholder="">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint>Enter your name eg. James Smith</mat-hint>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Breed</mat-label>
-        <input matInput placeholder="Breed">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter the breed of the found Pig</mat-hint>
-    </mat-form-field>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Color</mat-label>
-        <input matInput placeholder="Color">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter the color of the found Pig</mat-hint>
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Phone</mat-label>
+            <input formControlName="phone" matInput placeholder="">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Enter your phone number eg. 604 444 4444</mat-hint>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Location</mat-label>
-        <input matInput placeholder="Location">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter the location of the found Pig</mat-hint>
-    </mat-form-field>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Reported By</mat-label>
-        <input matInput placeholder="Reported By">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter name of person who found pig</mat-hint>
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Breed</mat-label>
+            <input formControlName="breed" matInput placeholder="">
+            <mat-icon matSuffix>pets</mat-icon>
+            <mat-hint>Enter the breed of the found Pig eg. Berkshire</mat-hint>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>PID</mat-label>
-        <input matInput placeholder="PID">
-        <mat-icon matSuffix>pets</mat-icon>
-        <mat-hint>Enter the Pig Id of the found Pig</mat-hint>
-    </mat-form-field>
+        <mat-slide-toggle (change)="isChecked = !isChecked">Existing Location</mat-slide-toggle>
+
+        <div class="input-container" [hidden] = "!isChecked">
+            <mat-form-field hintLabel="Latitude" appearance="outline">
+              <mat-label>Latitude</mat-label>
+              <input  matInput placeholder="Latitude" >
+              <mat-icon matSuffix> location_on</mat-icon>
+
+
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Longitude" appearance="outline">
+                <mat-label>Longitude</mat-label>
+                <mat-icon matSuffix> location_on</mat-icon>
+
+                <input  matInput placeholder="Longitude" >
+
+              </mat-form-field>
+     
+          </div>
+
+        <div [hidden] = "isChecked" >
+            <mat-form-field appearance="outline" class="input">
+                <mat-label>Location</mat-label>
+                <input formControlName="location" matInput >
+                <mat-icon matSuffix> location_on</mat-icon>
+                <mat-hint>Enter the location of the found Pig</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>PID</mat-label>
+            <input formControlName="pid" matInput placeholder="PID">
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-hint>Enter the Pig Id of the found Pig</mat-hint>
+        </mat-form-field>
+   </form>
 </div>
 
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary" mat-dialog-close>Save</button>
+    <button mat-raised-button color="warn" mat-dialog-close><mat-icon>undo</mat-icon>
+   
+    </button>
+
+    <button mat-raised-button color="primary" mat-dialog-close (click)="addPig()"><mat-icon matSuffix>check</mat-icon></button>
 </div>

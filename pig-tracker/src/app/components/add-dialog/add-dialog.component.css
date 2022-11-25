@@ -1,10 +1,21 @@
 mat-form-field{
-    width: 100%;
     margin-bottom: 15px;
 }
 
+.input {
+    width: 98%;
+}
 
 .mat-raised-button{
-    margin: 5px;
+    margin-right: 7px;
 }
+
+.input-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+}
+
+.input-container mat-form-field {
+    width: 48%;
+}
+
 

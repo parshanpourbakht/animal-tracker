@@ -13,6 +13,19 @@ import { AddDialogComponent } from './components/add-dialog/add-dialog.component
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MapComponent } from './components/map/map.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card';
+
+
+
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -20,7 +33,7 @@ import { MapComponent } from './components/map/map.component';
   declarations: [
     AppComponent,
     AddDialogComponent,
-    MapComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +44,20 @@ import { MapComponent } from './components/map/map.component';
     MatToolbarModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule, 
+    HttpClientModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSlideToggleModule,
+    DatePipe,
+    MatSidenavModule,
+    MatCardModule
+
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
