@@ -33,4 +33,5 @@ export class ApiServiceService {
   getPig(){
     return this.http.get<any>("https://272.selfip.net/apps/i4eutQ4nfi/collections/pig-tracker/documents/");
   }
+
 }

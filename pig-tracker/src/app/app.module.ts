@@ -26,6 +26,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
+import { marker } from 'leaflet';
+import { MarkerService } from './services/marker.service';
+import { TableComponent } from './components/table/table.component';
+
+
 
 
 
@@ -33,7 +38,8 @@ import { DatePipe } from '@angular/common';
   declarations: [
     AppComponent,
     AddDialogComponent,
-    MapComponent
+    MapComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +60,10 @@ import { DatePipe } from '@angular/common';
     MatSlideToggleModule,
     DatePipe,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
 
   ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+  providers: [DatePipe, MarkerService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

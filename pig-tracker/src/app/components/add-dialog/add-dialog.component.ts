@@ -15,7 +15,8 @@ export class AddDialogComponent implements OnInit {
 
   report_data !: FormGroup;
 
-  constructor(private formBuilder : FormBuilder, private api : Api, @Inject(MAT_DIALOG_DATA) public formData:any, public datepipe : DatePipe) { }
+  constructor(private formBuilder : FormBuilder, private api : Api,
+     @Inject(MAT_DIALOG_DATA) public formData:any, public datepipe : DatePipe) { }
 
   isChecked = false;
 
@@ -34,7 +35,10 @@ export class AddDialogComponent implements OnInit {
       status : [false],
       breed : ['', Validators.required],
       location : ['', Validators.required],
-      pid : ['', Validators.required]
+      lat : ['', Validators.required],
+      long : ['', Validators.required],
+      pid : ['', Validators.required],
+      details : ['']
     })
   }
 
@@ -45,11 +49,12 @@ export class AddDialogComponent implements OnInit {
 
       this.api.postPig(this.report_data.value).subscribe({
         next:(response)=>{
-          alert("Pig Added Succesfully")
+          alert("Pig Added Succesfully");
+
         },
 
         error:()=>{
-          alert("Error when Pig Added")
+          alert("Error when Pig Added");
 
         }
       })

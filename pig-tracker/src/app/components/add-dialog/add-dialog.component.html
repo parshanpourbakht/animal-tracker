@@ -20,7 +20,7 @@ Please enter below information related to the found pig
 
         <mat-form-field appearance="outline" class="input">
             <mat-label>Phone</mat-label>
-            <input formControlName="phone" matInput placeholder="">
+            <input formControlName="phone" matInput placeholder="" type="number">
             <mat-icon matSuffix>phone</mat-icon>
             <mat-hint>Enter your phone number eg. 604 444 4444</mat-hint>
 
@@ -28,7 +28,7 @@ Please enter below information related to the found pig
 
         <mat-form-field appearance="outline" class="input">
             <mat-label>Breed</mat-label>
-            <input formControlName="breed" matInput placeholder="">
+            <input formControlName="breed" matInput placeholder="" type="text">
             <mat-icon matSuffix>pets</mat-icon>
             <mat-hint>Enter the breed of the found Pig eg. Berkshire</mat-hint>
         </mat-form-field>
@@ -38,7 +38,7 @@ Please enter below information related to the found pig
         <div class="input-container" [hidden] = "!isChecked">
             <mat-form-field hintLabel="Latitude" appearance="outline">
               <mat-label>Latitude</mat-label>
-              <input  matInput placeholder="Latitude" >
+              <input formControlName="lat" matInput placeholder="Latitude" type="number">
               <mat-icon matSuffix> location_on</mat-icon>
 
 
@@ -48,7 +48,7 @@ Please enter below information related to the found pig
                 <mat-label>Longitude</mat-label>
                 <mat-icon matSuffix> location_on</mat-icon>
 
-                <input  matInput placeholder="Longitude" >
+                <input formControlName="long" matInput placeholder="Longitude" type="number">
 
               </mat-form-field>
      
@@ -65,10 +65,19 @@ Please enter below information related to the found pig
 
         <mat-form-field appearance="outline" class="input">
             <mat-label>PID</mat-label>
-            <input formControlName="pid" matInput placeholder="PID">
+            <input formControlName="pid" matInput placeholder="PID" type="number">
             <mat-icon matSuffix>lock</mat-icon>
             <mat-hint>Enter the Pig Id of the found Pig</mat-hint>
         </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Details</mat-label>
+            <textarea formControlName="details" matInput placeholder="details" type="text"></textarea>
+
+            <mat-icon matSuffix>data_usage</mat-icon>
+            <mat-hint>Enter addtional information</mat-hint>
+        </mat-form-field>
+
    </form>
 </div>
 
