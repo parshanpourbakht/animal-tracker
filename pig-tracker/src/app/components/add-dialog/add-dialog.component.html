@@ -35,7 +35,22 @@ Please enter below information related to the found pig
 
         <mat-slide-toggle (change)="isChecked = !isChecked">Existing Location</mat-slide-toggle>
 
-        <div class="input-container" [hidden] = "!isChecked">
+        <div class="input-container" [hidden] = "isChecked">
+
+            <mat-form-field appearance="outline" class="input">
+                
+                <mat-label>Location</mat-label>
+                <input formControlName="location" matInput>
+
+                <mat-icon matSuffix> location_on</mat-icon>
+                <mat-hint>Enter the location of the found Pig</mat-hint>
+            </mat-form-field>
+
+          </div>
+
+        <div class="input-container" [hidden] = "isChecked">
+
+
             <mat-form-field hintLabel="Latitude" appearance="outline">
               <mat-label>Latitude</mat-label>
               <input formControlName="lat" matInput placeholder="Latitude" type="number">
@@ -47,19 +62,25 @@ Please enter below information related to the found pig
             <mat-form-field hintLabel="Longitude" appearance="outline">
                 <mat-label>Longitude</mat-label>
                 <mat-icon matSuffix> location_on</mat-icon>
-
                 <input formControlName="long" matInput placeholder="Longitude" type="number">
-
               </mat-form-field>
      
           </div>
 
-        <div [hidden] = "isChecked" >
+       
+
+          
+
+        <div [hidden] = "!isChecked" >
+            
+
             <mat-form-field appearance="outline" class="input">
-                <mat-label>Location</mat-label>
-                <input formControlName="location" matInput >
-                <mat-icon matSuffix> location_on</mat-icon>
-                <mat-hint>Enter the location of the found Pig</mat-hint>
+                <mat-label>Locations</mat-label>
+                <mat-select disableRipple formControlName="location">
+                  <mat-option value="SFU">SFU</mat-option>
+                  <mat-option value="Beijing">Beijing</mat-option>
+                  <mat-option value="Tokyo">Tokyo</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 

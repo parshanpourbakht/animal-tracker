@@ -14,13 +14,15 @@
 
 <app-map></app-map>
 
-<mat-drawer-container class=" border example-container" autosize>  
+<mat-drawer-container class="example-container" autosize>  
   
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
   
   <ng-container matColumnDef="location">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Location</th>
     <td mat-cell *matCellDef="let row"> {{row.data.location}} </td>
+
+
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -35,7 +37,23 @@
 
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-    <td mat-cell *matCellDef="let row"> {{row.data.status}} </td>
+
+    
+    <td mat-cell *matCellDef="let row">
+      <mat-slide-toggle class="disable-toggle" [(ngModel)]="row.data.status">
+     
+        <p *ngIf="row.data.status">
+          RETRIVED
+        </p>
+
+        <p *ngIf="!row.data.status">
+          NOT RETRIVED
+        </p>
+
+    </mat-slide-toggle>
+      
+    </td>
+
   </ng-container>
 
   <ng-container matColumnDef="details">
@@ -51,12 +69,24 @@
     <th mat-header-cell *matHeaderCellDef> Remove </th>
     <td mat-cell *matCellDef="let row">
 
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="deletePig(row.key)">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openDeleteDialog(row.key)">
         <mat-icon>delete_forever</mat-icon>
       </button>
     
     </td>
   </ng-container>
+
+  <ng-container matColumnDef="approve">
+    <th mat-header-cell *matHeaderCellDef> Approve </th>
+    <td mat-cell *matCellDef="let row">
+
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="signinDialog(row.key)">
+        <mat-icon>check_circle</mat-icon>
+      </button>
+    
+    </td>
+  </ng-container>
+
 
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -66,7 +96,7 @@
 </table>
 
 
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10]" aria-label="Select page of users"></mat-paginator>
 
 
   <mat-drawer #drawer class="example-sidenav" mode="side" position="end">

@@ -10,12 +10,11 @@ export class ApiServiceService {
 
   constructor(private http : HttpClient, public datepipe : DatePipe ) { }
 
-
+  path = "https://272.selfip.net/apps/i4eutQ4nfi/collections/KjglcGjGdcmiOLB3v1QUjRSGXtnBtN/documents/"
   postPig(data: any){
 
     
     const currentDateTime = this.datepipe.transform((new Date), 'MMddyyyyhmmss');
-     console.log(currentDateTime)
 
     var obj: any = 
     {
@@ -23,15 +22,24 @@ export class ApiServiceService {
       "data": data
     };
 
-    return this.http.post<any>("https://272.selfip.net/apps/i4eutQ4nfi/collections/pig-tracker/documents/", obj);
+    return this.http.post<any>(this.path, obj);
   }
 
   deletePig(key : any){
-    return this.http.delete<any>("https://272.selfip.net/apps/i4eutQ4nfi/collections/pig-tracker/documents/"+key);
+    return this.http.delete<any>(this.path+key);
+  }
+
+  approvePig(key :any, data:any){
+    return this.http.put(this.path+key, data)
+
+  }
+
+  getSpecificPig(key : any) {
+    return this.http.get<any>(this.path+key);
   }
 
   getPig(){
-    return this.http.get<any>("https://272.selfip.net/apps/i4eutQ4nfi/collections/pig-tracker/documents/");
+    return this.http.get<any>(this.path);
   }
 
 }

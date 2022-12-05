@@ -28,10 +28,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
 import { marker } from 'leaflet';
 import { MarkerService } from './services/marker.service';
-import { TableComponent } from './components/table/table.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
-
-
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { TableComponent } from './components/table/table.component';
     AppComponent,
     AddDialogComponent,
     MapComponent,
-    TableComponent
+    SigninComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,8 @@ import { TableComponent } from './components/table/table.component';
     DatePipe,
     MatSidenavModule,
     MatCardModule,
+    MatSlideToggleModule,
+    MatSelectModule
 
   ],
   providers: [DatePipe, MarkerService],
